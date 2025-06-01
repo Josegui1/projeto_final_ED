@@ -7,15 +7,17 @@
 
 struct Node{
     std::string word;
-    std::vector<int> DocumentIds;
+    std::vector<int> documentIds;
     Node* parent;
     Node* left;
     Node* right;
     int height;
+    int isRed;
 };
 
 struct BinaryTree{
     Node* root;
+    Node* NIL;
 };
 
 struct InsertResult{
@@ -25,7 +27,7 @@ struct InsertResult{
 
 struct SearchResult{
     int found;
-    std::vector<int> DocumentIds;
+    std::vector<int> documentIds;
     double executionTime;
     int numComparisons;
 };
@@ -35,6 +37,7 @@ void printIndex(BinaryTree* tree);
 void printTree(BinaryTree* tree);
 int getHeight(Node* node);
 void inorderTraversal(Node* node);
+void printTreeHelper(Node* node, const std::string& prefix, bool isLast);
 
 #endif
 
