@@ -1,5 +1,6 @@
 #include "bst.h"
 #include <chrono>
+#include <algorithm>
 
 namespace BST {
 
