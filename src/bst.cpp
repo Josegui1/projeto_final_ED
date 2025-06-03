@@ -33,7 +33,7 @@ InsertResult insert(BinaryTree* tree, const std::string& word, int documentId) {
             result.executionTime = std::chrono::duration<double, std::milli>(endTime - startTime).count();
             return result;
         }
-        // Caso palavra nao esteja ja presente, se adiciona
+        // Percorremos para proxima iteracao
         if (word < current->word) {
             current = current->left;
         } 
@@ -42,6 +42,7 @@ InsertResult insert(BinaryTree* tree, const std::string& word, int documentId) {
         }
     }
 
+    // Caso palavra nao esteja presente, ou seja a 1a palavra, a inserimos como novo node.
     Node* newNode = createNode(word, documentId);
     if (parent == nullptr) {
         tree->root = newNode;
