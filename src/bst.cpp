@@ -1,5 +1,6 @@
 #include "bst.h"
 #include <chrono>
+#include <algorithm>
 
 namespace BST {
 
@@ -92,6 +93,18 @@ SearchResult search(BinaryTree* tree, const std::string& word) {
     return result;
 }
 
-void destroy(BinaryTree* tree);
+void destroyHelper(Node* node) {
+    if (node == nullptr) return;
+    destroyHelper(node->left);
+    destroyHelper(node->right);
+    delete node;
+}
 
+// Recursivamente apagamos cada nó, e após isso, a arvore.
+void destroy(BinaryTree* tree) {
+    if (tree == nullptr) return;
+    destroyHelper(tree->root);
+    tree->root = nullptr;
+    delete tree;
+}
 }

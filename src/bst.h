@@ -9,6 +9,7 @@ namespace BST {
 BinaryTree* create();
 InsertResult insert(BinaryTree* tree, const std::string& word, int documentId);
 SearchResult search(BinaryTree* tree, const std::string& word);
+void destroyHelper(Node* node);
 void destroy(BinaryTree* tree);
 
 }
