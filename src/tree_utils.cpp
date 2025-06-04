@@ -51,7 +51,7 @@ void printIndex(BinaryTree* tree) {
 void printTreeHelper(Node* node, const std::string& prefix, bool isLast) {
     if (node != nullptr) {
         std::cout << prefix;
-        std::cout << (isLast ? "└── " : "├── ");
+        std::cout << (isLast ? "\\-- " : "|-- ");
         std::cout << node->word << std::endl;
         
         // Contar filhos não nulos
@@ -60,10 +60,10 @@ void printTreeHelper(Node* node, const std::string& prefix, bool isLast) {
         
         if (hasLeft || hasRight) {
             if (hasLeft) {
-                printTreeHelper(node->left, prefix + (isLast ? "    " : "│   "), !hasRight);
+                printTreeHelper(node->left, prefix + (isLast ? "   " : "|  "), !hasRight);
             }
             if (hasRight) {
-                printTreeHelper(node->right, prefix + (isLast ? "    " : "│   "), true);
+                printTreeHelper(node->right, prefix + (isLast ? "   " : "  "), true);
             }
         }
     }
