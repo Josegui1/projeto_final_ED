@@ -85,7 +85,7 @@ int main(int argc, char* argv[]) {
         cout << "Comparacoes totais: " << totalComparisons << endl;
         cout << "Comparacoes medias por busca: " << (double)totalComparisons / totalWords << endl;
         cout << "Tempo total de busca: " << totalTime << " ms" << endl;
-        cout << "Tempo médio por busca: " << totalTime / totalWords << " ms" << endl;
+        cout << "Tempo medio por busca: " << totalTime / totalWords << " ms" << endl;
     } else {
         cerr << "Comando invalido: use 'search' ou 'stats'" << endl;
     }
