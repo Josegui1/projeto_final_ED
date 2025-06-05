@@ -55,11 +55,11 @@ int main(int argc, char* argv[]) {
                 for (int docId : querry.documentIds) {
                     cout << docId << " ";
                 }
-                cout << "(Comparações: " << querry.numComparisons 
+                cout << "(Comparacoes: " << querry.numComparisons 
                      << ", Tempo: " << querry.executionTime << " ms)" << endl;
             } else {
-                cout << "Palavra \"" << word << "\" não encontrada ("
-                     << querry.numComparisons << " comparações)" << endl;
+                cout << "Palavra \"" << word << "\" nao encontrada ("
+                     << querry.numComparisons << " comparacoes)" << endl;
             }
         }
 
@@ -80,14 +80,14 @@ int main(int argc, char* argv[]) {
         }
 
         // E output nossos resultados.
-        cout << "Estatísticas de busca:" << endl;
+        cout << "Estatisticas de busca:" << endl;
         cout << "Total de palavras buscadas: " << totalWords << endl;
-        cout << "Comparações totais: " << totalComparisons << endl;
-        cout << "Comparações médias por busca: " << (double)totalComparisons / totalWords << endl;
+        cout << "Comparacoes totais: " << totalComparisons << endl;
+        cout << "Comparacoes medias por busca: " << (double)totalComparisons / totalWords << endl;
         cout << "Tempo total de busca: " << totalTime << " ms" << endl;
         cout << "Tempo médio por busca: " << totalTime / totalWords << " ms" << endl;
     } else {
-        cerr << "Comando inválido: use 'search' ou 'stats'" << endl;
+        cerr << "Comando invalido: use 'search' ou 'stats'" << endl;
     }
 
     // Liberamos memoria.
