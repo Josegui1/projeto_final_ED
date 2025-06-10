@@ -1,4 +1,4 @@
-#include "bst.h"
+#include "avl.h"
 #include "data.h"
 #include <iostream>
 #include <string>
@@ -7,12 +7,12 @@
 
 
 using namespace std;
-using namespace BST;
+using namespace AVL;
 using namespace DATA;
 
 int main(int argc, char* argv[]) {
     if (argc != 4) {
-        cerr << "Uso: ./bst <search|stats> <n_docs> <diretorio>" << endl;
+        cerr << "Uso: ./avl <search|stats> <n_docs> <diretorio>" << endl;
         return 1;
     }
 
@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     int nDocs = stoi(argv[2]);
     string directory = argv[3];
 
-    // Cria arvore binaria
+    // Cria arvore AVL
     BinaryTree* tree = create();
 
     // Cria um vetor de FileDatas para armazenar nossos dados
