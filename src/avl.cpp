@@ -25,67 +25,80 @@ namespace AVL{
     }
 
     //Criando as funcoes auxiliares de rotacao simples para a esquerda e para a direita
-    Node* rotateLeft(Node* y){
-        Node* x = y->right;
-        Node* T2 = x->left;
+    Node* rotateLeft(Node* nodeA) {
+        //Definimos pointers para nodes que estaremos manipulando 
+        Node* nodeB = nodeA->right;
+        nodeA->right = nodeB->left;
 
-        // Ajustando os nos filhos
-        x->left = y;
-        y->right = T2;
+        //Mudamos local para filhos de B
+        if (nodeB->left != nullptr)
+            nodeB->left->parent = nodeA;
 
-        // Ajustando os pais caso existam
-        if (T2){
-            T2->parent = y;
+        //Mudamos os pais de B
+        nodeB->parent = nodeA->parent;
+
+        //Definimos a nova ordem para que encaixe na arvore original
+        if (nodeA->parent != nullptr) {
+            if (nodeA == nodeA->parent->left)
+                nodeA->parent->left = nodeB;
+            else
+                nodeA->parent->right = nodeB;
         }
 
-        x->parent = y->parent;
-        y->parent = x;
+        //Efetivamos a rotaçao em si
+        nodeB->left = nodeA;
+        nodeA->parent = nodeB;
 
-        // Ajusta a altura dos nos
-        updateHeight(y);
-        updateHeight(x);
+        //Atulizamos os dados dos nos manipulados
+        updateHeight(nodeA);
+        updateHeight(nodeB);
 
-        return x;
+        return nodeB;
     }
 
-    Node* rotateRight(Node* y){
-        Node* x = y->left;
-        Node* T2 = x->right;
+    Node* rotateRight(Node* nodeA) {
+        //Definimos pointers
+        Node* nodeB = nodeA->left;
+        nodeA->left = nodeB->right;
 
-        // Ajustando os nos filhos
-        x->right = y;
-        y->left = T2;
+        //Realocamos filhos
+        if (nodeB->right != nullptr)
+            nodeB->right->parent = nodeA;
 
-        // Ajustando os pais caso existam
-        if (T2){
-            T2->parent = y;
+        //Mudamos pais de B
+        nodeB->parent = nodeA->parent;
+
+        //Reencaixamos na arvore
+        if (nodeA->parent != nullptr) {
+            if (nodeA == nodeA->parent->left)
+                nodeA->parent->left = nodeB;
+            else
+                nodeA->parent->right = nodeB;
         }
 
-        x->parent = y->parent;
-        y->parent = x;
+        //Efetuamos rotacao
+        nodeB->right = nodeA;
+        nodeA->parent = nodeB;
 
-        // Ajusta a altura dos nos
-        updateHeight(y);
-        updateHeight(x);
+        updateHeight(nodeA);
+        updateHeight(nodeB);
 
-        return x;
+        return nodeB;
     }
 
     // Criando funcoes de rotacoes duplas para os casos 
-    Node* rotateLeftRight(Node* y){
-        y->left = rotateLeft(y->left);
-        if (y->left){
-            y->left->parent = y; 
-        }
-        return rotateRight(y);
+    Node* rotateLeftRight(Node* node) {
+        //Para os casos de rotacao dupla, primeiro definimos os nodes que mudaremos com nossos pointers, e em seguida efeutamos as duas rotacao em sequencia,
+        //onde os detalhes e possiveis filhos no outro galho simplesmente sao realocados nas nossas rotacoes simples
+        node->left = rotateLeft(node->left);
+        if (node->left) node->left->parent = node;
+        return rotateRight(node);
     }
 
-    Node* rotateRightLeft(Node* y){
-        y->right = rotateRight(y->right);
-        if (y->right){
-            y->right->parent = y;
-        }
-        return rotateLeft(y);
+    Node* rotateRightLeft(Node* node) {
+        node->right = rotateRight(node->right);
+        if (node->right) node->right->parent = node;
+        return rotateLeft(node);
     }
 
     // Indo para as funcoes de insercao. Parte da funcao e igual ao da bst, exceto que ocorre o rebalanceamento no final de todo o processo
