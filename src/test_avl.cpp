@@ -174,11 +174,21 @@ void testLargerDataset() {
     BinaryTree* tree = create();
     
     vector<string> words = {
-        "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "black", "white",
-        "gray", "cyan", "magenta", "lime", "maroon", "navy", "olive", "teal", "violet", "indigo",
-        "turquoise", "beige", "ivory", "coral", "salmon", "khaki", "lavender", "mint", "gold", "silver",
-        "bronze", "peach", "plum", "chocolate", "crimson", "emerald", "jade", "ruby", "sapphire", "amber",
-        "mustard", "rose", "fuchsia", "orchid", "azure", "charcoal", "denim", "sand", "mahogany", "taupe"
+        "red", "green", "blue", "yellow", "orange", "purple", "pink", "brown", "black", "white",
+        "gray", "cyan", "magenta", "lime", "teal", "navy", "maroon", "olive", "silver", "gold",
+        "coral", "beige", "ivory", "turquoise", "indigo", "lavender", "violet", "crimson", "khaki", "salmon",
+        "plum", "orchid", "mint", "peach", "apricot", "tan", "amber", "chocolate", "rose", "aqua",
+        "azure", "periwinkle", "burgundy", "cerulean", "chartreuse", "mustard", "sepia", "saffron", "rust", "mauve",
+        "ochre", "eggplant", "jade", "emerald", "ruby", "sapphire", "bronze", "copper", "smoke", "snow",
+        "steel", "charcoal", "sand", "cloud", "stone", "lead", "ash", "ink", "bubblegum", "denim",
+        "fuchsia", "honey", "cinnamon", "alabaster", "canary", "lemon", "flamingo", "blush", "mulberry", "sangria",
+        "pine", "forest", "seafoam", "midnight", "sunset", "sunflower", "sky", "storm", "mocha", "latte",
+        "cobalt", "mulch", "pearl", "powder", "rosewood", "raspberry", "cherry", "wine", "melon", "glacier",
+        "papaya", "cantaloupe", "tangerine", "bronze", "brass", "mintcream", "honeydew", "cornflower", "wheat", "basil",
+        "clay", "pistachio", "moss", "asparagus", "zucchini", "sienna", "mahogany", "ebony", "snowdrift", "fog",
+        "vanilla", "ice", "eggnog", "ocean", "bay", "lagoon", "reed", "iris", "dandelion", "sorbet",
+        "poppy", "blueberry", "platinum", "rosegold", "topaz", "opal", "skyblue", "aquamarine", "lilac", "neonpink",
+        "neongreen", "neonblue", "hotpink", "pastelpink", "pastelgreen", "pastelblue", "tawny", "taupe", "shamrock", "mintgreen"
     };
     
     double totalTime = 0;
@@ -203,8 +213,15 @@ void testLargerDataset() {
     cout << "Total de comparacoes: " << totalComparisons << endl;
     cout << "Media de comparacoes: " << (double)totalComparisons / words.size() << endl;
 
-   //////////// falta comparacao de maior e menor branch para ver se tem tamanho com diferenca de maximo 2.
+    // Comparamos o maior e o menor galho
+    int minDepth = INT_MAX;
+    int maxDepth = 0;
+    findLeafDepths(tree->root, 0, minDepth, maxDepth);
+    cout << "Altura do maior galho: " << maxDepth << "// Altura do menor galho: " << minDepth << endl;
+    cout << "Diferença de altura entre o maior e menor galhos: " << maxDepth - minDepth << endl;
+    printTree(tree);
 
+    
     // Testar algumas buscas
     cout << "\nTestando buscas:" << endl;
     for (int i = 0; i < 3; i++) {

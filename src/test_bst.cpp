@@ -211,6 +211,14 @@ void testLargerDataset() {
              << " - Comparacoes: " << result.numComparisons << endl;
     }
     
+    // Comparamos o maior e o menor galho
+    int minDepth = INT_MAX;
+    int maxDepth = 0;
+    findLeafDepths(tree->root, 0, minDepth, maxDepth);
+    cout << "Altura do maior galho: " << maxDepth << "// Altura do menor galho: " << minDepth << endl;
+    cout << "Diferença de altura entre o maior e menor galhos: " << maxDepth - minDepth << endl;
+    printTree(tree);
+
     cout << "\nIndice final:" << endl;
     printIndex(tree);
     
