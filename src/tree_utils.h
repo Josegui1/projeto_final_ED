@@ -38,6 +38,7 @@ void printTree(BinaryTree* tree);
 int getHeight(Node* node);
 void inorderTraversal(Node* node);
 void printTreeHelper(Node* node, const std::string& prefix, bool isLast);
+void findLeafDepths(Node* node, int depth, int& minDepth, int&maxDepth);
 
 #endif
 

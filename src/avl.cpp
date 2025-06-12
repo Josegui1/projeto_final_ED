@@ -232,16 +232,6 @@ namespace AVL{
         delete tree;
     }
 
-    void findLeafDepths(Node* node, int depth, int& minDepth, int&maxDepth){
-        if (!node) return;
-        if (!node->left && !node->right){
-            if(depth < minDepth) minDepth = depth;
-            if(depth > maxDepth) maxDepth = depth;
-        }
-        findLeafDepths(node->left, depth+1, minDepth, maxDepth);
-        findLeafDepths(node->right, depth+1, minDepth, maxDepth);
-    }
-
 
 }
 

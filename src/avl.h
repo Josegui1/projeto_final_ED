@@ -10,7 +10,6 @@ namespace AVL{
     InsertResult insert(BinaryTree* tree, const std::string& word, int documentId);
     SearchResult search(BinaryTree* tree, const std::string& word);
     void destroy(BinaryTree* tree);
-    void findLeafDepths(Node* node, int depth, int& minDepth, int&maxDepth);
 }
 
 #endif
