@@ -79,13 +79,19 @@ int main(int argc, char* argv[]) {
             }
         }
 
+        int minDepth = INT_MAX;
+        int maxDepth = 0;
+        findLeafDepths(tree->root, 0, minDepth, maxDepth);
+
         // E output nossos resultados.
-        cout << "Estatisticas de busca:" << endl;
+        cout << " ==== Estatisticas de busca ====:" << endl;
         cout << "Total de palavras buscadas: " << totalWords << endl;
         cout << "Comparacoes totais: " << totalComparisons << endl;
         cout << "Comparacoes medias por busca: " << (double)totalComparisons / totalWords << endl;
         cout << "Tempo total de busca: " << totalTime << " ms" << endl;
         cout << "Tempo medio por busca: " << totalTime / totalWords << " ms" << endl;
+        cout << "Altura do maior galho: " << maxDepth << "// Altura do menor galho: " << minDepth << endl;
+        cout << "Diferença de altura entre o maior e menor galhos: " << maxDepth - minDepth << endl;
     } else {
         cerr << "Comando invalido: use 'search' ou 'stats'" << endl;
     }
