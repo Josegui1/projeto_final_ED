@@ -22,7 +22,7 @@ g++ test_bst.cpp bst.cpp data.cpp tree_utils.cpp -o bst
 ./avl
 ./bst
 ```
-### ✅ CLI com Dados
+### CLI com Dados
 
 **Compilar:**
 ```bash
