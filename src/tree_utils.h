@@ -12,7 +12,7 @@ struct Node{
     Node* left;
     Node* right;
     int height;
-    int Color;
+    int color;
 };
 
 struct BinaryTree{
