@@ -9,7 +9,7 @@ Node* createNode(const std::string& word, int documentId){
     newNode->left = nullptr;
     newNode->right = nullptr;
     newNode->height = 1;
-    newNode->isRed = 1; 
+    newNode->Color = 0; 
     return newNode;
 }
 
